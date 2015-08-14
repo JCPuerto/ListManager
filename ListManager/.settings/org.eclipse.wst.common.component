@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ListManager">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="ListManagerWeb.war" deploy-path="/" handle="module:/resource/ListManagerWeb/ListManagerWeb">
+            <dependent-object>Module_1439513819263</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ListManagerDataAccess.jar" deploy-path="/lib" handle="module:/resource/ListManagerDataAccess/ListManagerDataAccess">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ListManagerWebServices.war" deploy-path="/" handle="module:/resource/ListManagerWebServices/ListManagerWebServices">
+            <dependent-object>Module_1439514224845</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
