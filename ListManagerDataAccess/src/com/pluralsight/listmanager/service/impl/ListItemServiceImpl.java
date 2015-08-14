@@ -49,10 +49,8 @@ public class ListItemServiceImpl implements ListItemService {
 
 		ListItem listItem = listItemDao.getListItemById(listItemId);
 
-		if ((listItem != null) || userId.equals(listItem.getUserId())) {
+		if (listItem != null && userId.equals(listItem.getUserId())) {
 			listItemDao.deleteListItem(listItemId);
 		}
-
 	}
-
 }
