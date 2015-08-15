@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere Application Server v8.5 JRE"/>
+	<classpathentry kind="lib" path="lib/h2-1.4.188.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-catalina-7.0.63.jar"/>
+	<classpathentry kind="lib" path="lib/tomcat-juli-7.0.63.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="src" path="/ListManagerDataAccess"/>
+	<classpathentry kind="lib" path="D:/IBM/WebSphere/AppServer/runtimes/com.ibm.ws.admin.client_8.5.0.jar"/>
+	<classpathentry kind="lib" path="D:/IBM/WebSphere/AppServer/runtimes/com.ibm.ws.ejb.embeddableContainer_8.5.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

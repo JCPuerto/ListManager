@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
 				user = new User();
 				user.setId(rs.getLong("Id"));
 				user.setUsername(rs.getString("UserName"));
-				user.setUsername(rs.getString("Display_Name"));
+				user.setDisplayname(rs.getString("Display_Name"));
 			}
 
 			rs.close();
