@@ -7,4 +7,5 @@
 
 	<virtual-host name="default_host" />
 
+	<resource-ref name="jdbc/AppDb" binding-name="jdbc/AppDb" />
 </web-bnd>
