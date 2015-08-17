@@ -19,7 +19,7 @@
 		
 		<div class="row">
 
-			<h:form>
+			<h:form id="listForm">
 
 				<h:dataTable value="#{userBean.listItems}" var="item" rowClasses="even, odd" styleClass="listing">
 					<h:column>
@@ -32,9 +32,13 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header"></f:facet>
-						<h:commandLink value="edit" action="#{listItemController.edit(item)}" />
+						<h:commandLink value="edit" action="#{listItemController.edit(item)}">
+							<f:ajax execute="@form" render="entryForm" />
+						</h:commandLink>
 						<h:outputText value=" | " />
-						<h:commandLink value="delete" action="#{listItemController.delete(item)}" />
+						<h:commandLink value="delete" action="#{listItemController.delete(item)}">
+							<f:ajax execute="@form" render="listForm" />
+						</h:commandLink>
 					</h:column>
 				</h:dataTable>
 		
@@ -42,10 +46,11 @@
 
 		</div>
 		
-		<h:form styleClass="entryForm">
+		<h:form id="entryForm" styleClass="entryForm">
 		
 			<div class="row header">
-				<h:outputText value="New Item:" />
+				<h:outputText value="New Item:" rendered="#{listItemBean.id == null}" />
+				<h:outputText value="Editing Item:" rendered="#{listItemBean.id != null}" />
 			</div>
 			
 			<div class="row">
@@ -57,7 +62,10 @@
 			</div>
 		
 			<div class="row">
-				<h:commandButton value="Save" action="#{listItemController.save}" styleClass="button" />
+				<h:inputHidden value="#{listItemBean.id}" />
+				<h:commandButton value="#{listItemBean.saveButtonValue}" action="#{listItemController.save}" styleClass="button">
+					<f:ajax execute="@form" render="listForm entryForm" />
+				</h:commandButton>
 			</div>
 		</h:form>
 				

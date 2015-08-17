@@ -27,24 +27,36 @@ public class ListItemController {
 	}
 
 	public String save() {
-		listItemService.addListItem(userBean.getUserId(), listItemBean.getValue());
-		return "list?faces-redirect=true";
-	}
-
-	public String edit(ListItem listItem) {
+		if(listItemBean.getId() == null || listItemBean.getId() == 0){
+			listItemService.addListItem(userBean.getUserId(), listItemBean.getValue());	
+		}
+		else{
+			listItemService.updateListItem(userBean.getUserId(), listItemBean.getId(), listItemBean.getValue());
+		}
+		
+		listItemBean.setId(null);
+		listItemBean.setValue(null);
+		
 		return null;
 	}
 
-	public String delete(ListItem listItem) {
-		listItemService.deleteListItem(userBean.getUserId(), listItem.getId());
-		return "list?faces-redirect=true";
+	public String edit(ListItem listItem) {		
+		listItemBean.setId(listItem.getId());
+		listItemBean.setValue(listItem.getValue());
+		
+		return null;
 	}
 
-	public void setUserBean(UserBean userBean) {
+	public String delete(ListItem listItem) {		
+		listItemService.deleteListItem(userBean.getUserId(), listItem.getId());
+		return null;
+	}
+
+	public void setUserBean(UserBean userBean) {		
 		this.userBean = userBean;
 	}
 
-	public void setListItemBean(ListItemBean listItemBean) {
+	public void setListItemBean(ListItemBean listItemBean) {		
 		this.listItemBean = listItemBean;
 	}
 }
