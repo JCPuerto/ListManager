@@ -28,20 +28,35 @@ public class DataSourceSetupUtil {
 
 	private static void setupInitialContext() throws NamingException {
 
+		// Since we're not using WebSphere but Tomcat we need to redefine some
+		// properties
 		System.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.apache.naming.java.javaURLContextFactory");
 		System.setProperty(Context.URL_PKG_PREFIXES, "org.apache.naming");
 
+		// Create the context
 		InitialContext ctx = new InitialContext();
-
 		ctx.createSubcontext("java:");
 		ctx.createSubcontext("java:comp");
 		ctx.createSubcontext("java:comp/env");
 		ctx.createSubcontext("java:comp/env/jdbc");
 
-		JdbcDataSource dataSource = new JdbcDataSource();
-		dataSource.setURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
+		// Using H2
 
-		ctx.bind("java:comp/env/jdbc/AppDb", dataSource);
+		JdbcDataSource ds = new JdbcDataSource();
+		ds.setURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
+
+		// Using SQL Server
+
+		// This 2 simple line works
+		// However the sql statements in setupDdl() and tearDown() needs to be
+		// fixed.
+		// I didn't do it!
+
+		// SQLServerDataSource ds = new SQLServerDataSource();
+		// ds.setURL("jdbc:sqlserver://localhost:1433; databaseName=AppDb;
+		// user=AppDbUser; password=Password1");
+
+		ctx.bind("java:comp/env/jdbc/AppDb", ds);
 	}
 
 	private static void setupDdl() throws SQLException {

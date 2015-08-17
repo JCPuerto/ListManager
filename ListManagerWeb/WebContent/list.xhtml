@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html	xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		>
+	
+	<h:head>
+		<title>List Manager</title>
+		<h:outputStylesheet library="css" name="site.css" />
+		<h:outputStylesheet library="css" name="list.css" />
+	</h:head>
+	
+	<h:body>
+
+		<div class="row">
+			<h1>
+				<h:outputText value="Hello, #{userBean.username}" />
+			</h1>
+		</div>
+		
+		<div class="row">
+
+			<h:form>
+
+				<h:dataTable value="#{userBean.listItems}" var="item" rowClasses="even, odd" styleClass="listing">
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						#{item.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Value</f:facet>
+						#{item.value}
+					</h:column>
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandLink value="edit" action="#{listItemController.edit(item)}" />
+						<h:outputText value=" | " />
+						<h:commandLink value="delete" action="#{listItemController.delete(item)}" />
+					</h:column>
+				</h:dataTable>
+		
+			</h:form>
+
+		</div>
+		
+		<h:form styleClass="entryForm">
+		
+			<div class="row header">
+				<h:outputText value="New Item:" />
+			</div>
+			
+			<div class="row">
+				<h:message for="newValue" styleClass="error" />
+			</div>
+			
+			<div class="row">
+				<h:inputText id="newValue" value="#{listItemBean.value}" required="true" requiredMessage="Value is required." />
+			</div>
+		
+			<div class="row">
+				<h:commandButton value="Save" action="#{listItemController.save}" styleClass="button" />
+			</div>
+		</h:form>
+				
+	</h:body>
+	
+</html>

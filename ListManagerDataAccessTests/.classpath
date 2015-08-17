@@ -9,5 +9,6 @@
 	<classpathentry kind="src" path="/ListManagerDataAccess"/>
 	<classpathentry kind="lib" path="D:/IBM/WebSphere/AppServer/runtimes/com.ibm.ws.admin.client_8.5.0.jar"/>
 	<classpathentry kind="lib" path="D:/IBM/WebSphere/AppServer/runtimes/com.ibm.ws.ejb.embeddableContainer_8.5.0.jar"/>
+	<classpathentry kind="lib" path="D:/IBM/Microsoft JDBC Driver 4.0 for SQL Server/sqljdbc_4.0/enu/sqljdbc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
